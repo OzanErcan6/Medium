@@ -9,20 +9,18 @@ import pyocr.builders
 import os
 
 
-# getting all frame paths from the current directory 
+# tüm resimlerin dosya yollarını input.txt dosyasına yazdırır.
 os.system('ls resimler >> input.txt')
 
-# filling inputarr 
+# alınan dosya yollarını kullanmak için arraye kopyalanır.
 inputarr = []
 with open('input.txt') as my_file:
     for line in my_file:
         inputarr.append(line)
 
 
-# setting density for all frames 
-#os.system('for i in *.png; do echo "mogrify -set units PixelsPerInch -density 1606 $i"; done')
 
-#  OCR work here 
+#  tesseract OCR kodu çalışan kısım.
 tools = pyocr.get_available_tools()
 if len(tools) == 0:
     print("No OCR tool found")
@@ -38,6 +36,7 @@ print("Will use lang '%s'" % lang)
 
 outCount=0
 
+# OCR dan elde edilen outputları txt dosyalarına yazdırır.
 for x in inputarr:
     x = x[:-1]
     txt = tool.image_to_string(
@@ -51,7 +50,6 @@ for x in inputarr:
     outCount += 1 
 
 f.close()
-
 
 
 os.unlink("input.txt")
