@@ -1,5 +1,5 @@
-# bu programın yanına resimler diye bir klasör açıp içine OCR dan geçirmek istediğiniz resimleri kopyalayın
-# python3 ocr.py   komutuyla resimlerdeki yazı ve karakterleri txt dosyasına bastırın.
+# bu programin yanina resimler diye bir klasor acip içine OCR dan gecirmek istediginiz resimleri kopyalayin
+# python3 ocr.py   komutuyla resimlerdeki yazi ve karakterleri txt dosyasina bastirin.
 
 
 
@@ -9,10 +9,10 @@ import pyocr.builders
 import os
 
 
-# tüm resimlerin dosya yollarını input.txt dosyasına yazdırır.
+# tum resimlerin dosya yollarini input.txt dosyasina yazdirir.
 os.system('ls resimler >> input.txt')
 
-# alınan dosya yollarını kullanmak için arraye kopyalanır.
+# alinan dosya yollarini kullanmak için arraye kopyalanir.
 inputarr = []
 with open('input.txt') as my_file:
     for line in my_file:
@@ -20,7 +20,7 @@ with open('input.txt') as my_file:
 
 
 
-#  tesseract OCR kodu çalışan kısım.
+#  tesseract OCR kodu çalisan kisim.
 tools = pyocr.get_available_tools()
 if len(tools) == 0:
     print("No OCR tool found")
@@ -36,7 +36,7 @@ print("Will use lang '%s'" % lang)
 
 outCount=0
 
-# OCR dan elde edilen outputları txt dosyalarına yazdırır.
+# OCR dan elde edilen outputlari txt dosyalarina yazdirir.
 for x in inputarr:
     x = x[:-1]
     txt = tool.image_to_string(
